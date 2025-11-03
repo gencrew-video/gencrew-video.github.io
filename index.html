@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TIP — Project Page</title>
+  <meta name="description" content="TIP Project Page: method overview, teaser image, and demo video gallery." />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0b0c0f;
+      --panel: #11131a;
+      --text: #e6e7ea;
+      --muted: #a3a9b6;
+      --brand: #6aa6ff;
+      --ring: rgba(106,166,255,.35);
+      --card: #12151d;
+      --border: #242836;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg: #f7f8fb; --panel:#fff; --text:#0e1116; --muted:#5a6270;
+        --card:#fff; --border:#e7eaf0; --ring: rgba(106,166,255,.35);
+        --shadow: 0 10px 30px rgba(17, 24, 39, .08);
+      }
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text); background: radial-gradient(1200px 800px at 70% -10%, rgba(106,166,255,.08), transparent), var(--bg);
+      line-height:1.6;
+    }
+    a{color:var(--brand); text-decoration:none}
+    .container{max-width:1152px; margin-inline:auto; padding:24px}
+    header.nav{
+      position:sticky; top:0; z-index:50; backdrop-filter: blur(10px);
+      background: color-mix(in hsl, var(--bg), transparent 45%);
+      border-bottom:1px solid var(--border);
+    }
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 24px}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.3px}
+    .brand .dot{width:10px; height:10px; border-radius:50%; background:var(--brand); box-shadow:0 0 0 6px var(--ring)}
+    .links{display:flex; gap:10px; flex-wrap:wrap}
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:14px; border:1px solid var(--border); background:linear-gradient(180deg, color-mix(in hsl, var(--panel), transparent 10%), var(--panel)); color:var(--text); font-weight:600; box-shadow:var(--shadow)}
+    .btn:hover{transform:translateY(-1px)}
+    .btn.secondary{background:var(--card)}
+
+    /* HERO */
+    .hero{display:grid; grid-template-columns: 1.15fr 1fr; gap:28px; align-items:center; padding:48px 24px}
+    @media (max-width: 960px){.hero{grid-template-columns:1fr;}}
+    .hero h1{font-size: clamp(28px, 4vw, 44px); line-height:1.15; margin:0 0 12px}
+    .subtitle{color:var(--muted); font-size: clamp(14px, 1.6vw, 18px)}
+    .hero-cta{display:flex; gap:12px; margin-top:18px; flex-wrap:wrap}
+
+    .teaser{
+      border:1px solid var(--border); border-radius:18px; overflow:hidden; background:var(--card); box-shadow:var(--shadow)
+    }
+    .teaser img{display:block; width:100%; height:auto}
+    .caption{padding:10px 14px; color:var(--muted); font-size:14px}
+    .teaser .pdf-teaser{width:100%; aspect-ratio:16/9; height:auto; border:0; background:#000}
+    .caption{padding:10px 14px; color:var(--muted); font-size:14px}
+
+    /* VIDEOS */
+    .section{padding:10px 24px 40px}
+    .section h2{font-size: clamp(22px, 3vw, 30px); margin:26px 0 10px}
+    .video-grid{display:grid; gap:16px; grid-template-columns: repeat( auto-fill, minmax(260px, 1fr) );}
+    .card{border:1px solid var(--border); background:linear-gradient(180deg, var(--card), color-mix(in hsl, var(--card), black 4%)); border-radius:16px; overflow:hidden; box-shadow:var(--shadow)}
+    .thumb{position:relative; aspect-ratio:16/9; overflow:hidden}
+    .thumb img{width:100%; height:100%; object-fit:cover; display:block; filter:saturate(1.05)}
+    .play{position:absolute; inset:auto 12px 12px auto; display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:12px; background:rgba(0,0,0,.55); color:#fff; font-weight:600; backdrop-filter: blur(6px)}
+    .meta{padding:12px 14px}
+    .meta h3{margin:0; font-size:16px}
+    .meta p{margin:6px 0 0; font-size:13px; color:var(--muted)}
+
+    /* dialog */
+    dialog{width:min(960px, 92vw); border:none; border-radius:18px; padding:0; overflow:hidden; box-shadow:var(--shadow); background:var(--panel)}
+    dialog::backdrop{background: rgba(6,8,12,.6)}
+    .dlg-head{display:flex; align-items:center; justify-content:space-between; padding:10px 14px; border-bottom:1px solid var(--border)}
+    .dlg-title{font-weight:700}
+    .dlg-body{padding:0; background:#000}
+    .dlg-body iframe, .dlg-body video{display:block; width:100%; height:auto; aspect-ratio:16/9}
+
+    footer{border-top:1px solid var(--border); color:var(--muted); padding:20px 24px 40px; text-align:center}
+    .authors{margin-top:8px; font-size:14px}
+    .pill{display:inline-block; padding:4px 10px; border:1px solid var(--border); border-radius:999px; font-size:12px; color:var(--muted)}
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner container">
+      <div class="brand"><span class="dot"></span>TIP</div>
+      <div class="links">
+        <!-- TODO: replace links -->
+        <a class="btn" href="#videos">🎬 Demo Videos</a>
+        <a class="btn secondary" href="#paper">📄 Paper</a>
+        <a class="btn secondary" href="#code">🧑‍💻 Code</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- ============= HERO ============= -->
+    <section class="hero" aria-labelledby="title">
+      <div>
+        <h1 id="title">TIP: <span class="pill">Project Page</span></h1>
+        <p class="subtitle">One‑line summary of your method and use cases. Buttons below can link to paper, code, dataset, or a long demo.</p>
+        <div class="hero-cta">
+          <!-- TODO: replace links -->
+          <a class="btn" href="https://github.com/your/repo" target="_blank" rel="noreferrer noopener">GitHub</a>
+          <a class="btn" href="https://arxiv.org/abs/xxxx.xxxxx" target="_blank" rel="noreferrer noopener">arXiv</a>
+          <a class="btn" href="#videos">Watch demos</a>
+        </div>
+      </div>
+      <figure class="teaser">
+        <!-- Teaser PDF embed -->
+        <object data="assets/teaser.pdf" type="application/pdf" class="pdf-teaser" aria-label="TIP pipeline teaser PDF">
+          <a href="assets/teaser.pdf" target="_blank" rel="noreferrer noopener">Open teaser PDF</a>
+        </object>
+        <figcaption class="caption">Fig. 1. TIP pipeline overview (PDF teaser).</figcaption>
+      </figure>
+    </section>
+
+    <!-- ============= VIDEOS ============= -->
+    <section id="videos" class="section" aria-labelledby="videos-title">
+      <h2 id="videos-title">🎬 Demo Videos</h2>
+      <p class="subtitle">Local MP4/WebM only. Click a thumbnail to open a player dialog.</p>
+
+      <div class="video-grid">
+        <article class="card">
+          <a class="thumb" href="#" data-video='{"type":"mp4","src":"assets/videos/video_1.mp4","title":"Video 1"}'>
+            <video src="assets/videos/video_1.mp4" muted playsinline loop preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
+            <span class="play">▶︎ Play</span>
+          </a>
+          <div class="meta">
+            <h3>Video 1</h3>
+            <p>Short description (optional).</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <a class="thumb" href="#" data-video='{"type":"mp4","src":"assets/videos/video_2.mp4","title":"Video 2"}'>
+            <video src="assets/videos/video_2.mp4" muted playsinline loop preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
+            <span class="play">▶︎ Play</span>
+          </a>
+          <div class="meta">
+            <h3>Video 2</h3>
+            <p>Short description (optional).</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <a class="thumb" href="#" data-video='{"type":"mp4","src":"assets/videos/video_3.mp4","title":"Video 3"}'>
+            <video src="assets/videos/video_3.mp4" muted playsinline loop preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
+            <span class="play">▶︎ Play</span>
+          </a>
+          <div class="meta">
+            <h3>Video 3</h3>
+            <p>Short description (optional).</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <a class="thumb" href="#" data-video='{"type":"mp4","src":"assets/videos/video_4.mp4","title":"Video 4"}'>
+            <video src="assets/videos/video_4.mp4" muted playsinline loop preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
+            <span class="play">▶︎ Play</span>
+          </a>
+          <div class="meta">
+            <h3>Video 4</h3>
+            <p>Short description (optional).</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <a class="thumb" href="#" data-video='{"type":"mp4","src":"assets/videos/video_5.mp4","title":"Video 5"}'>
+            <video src="assets/videos/video_5.mp4" muted playsinline loop preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
+            <span class="play">▶︎ Play</span>
+          </a>
+          <div class="meta">
+            <h3>Video 5</h3>
+            <p>Short description (optional).</p>
+          </div>
+        </article>
+      </div>
+        </article>
+
+        <!-- ======= Example: Local MP4 ======= -->
+        <article class="card">
+          <a class="thumb" href="#" data-video='{"type":"mp4","src":"assets/videos/demo2.mp4","title":"Scene B: Indoor Crowd"}'>
+            <video src="assets/videos/demo2.mp4" muted playsinline loop preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
+            <span class="play">▶︎ Play</span>
+          </a>
+          <div class="meta">
+            <h3>Scene B: Indoor Crowd</h3>
+            <p>Short description (10–20 words).</p>
+          </div>
+        </article>
+
+        
+              </div>
+    </section>
+
+    <!-- ============= PAPER & CODE ============= -->
+    <section id="paper" class="section" aria-labelledby="paper-title">
+      <h2 id="paper-title">📄 Paper & Resources</h2>
+      <ul>
+        <li>Paper: <a href="https://arxiv.org/abs/xxxx.xxxxx" target="_blank" rel="noreferrer noopener">arXiv:xxxx.xxxxx</a></li>
+        <li id="code">Code: <a href="https://github.com/your/repo" target="_blank" rel="noreferrer noopener">GitHub - your/repo</a></li>
+        <li>Dataset (optional): <a href="#" target="_blank" rel="noreferrer noopener">Dataset</a></li>
+        <li>Contact: <a href="mailto:you@example.com">you@example.com</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <dialog id="player">
+    <div class="dlg-head">
+      <div class="dlg-title" id="dlg-title">Now playing…</div>
+      <button id="dlg-close" class="btn" style="margin:8px">Close</button>
+    </div>
+    <div class="dlg-body" id="dlg-body"></div>
+  </dialog>
+
+  <footer>
+    <div class="container">
+      <div>© <span id="year"></span> TIP Project. All rights reserved.</div>
+      <div class="authors">Authors: list authors and affiliations here; can wrap across lines if needed.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Lightweight player (<dialog>)
+    const dlg = document.getElementById('player');
+    const dlgBody = document.getElementById('dlg-body');
+    const dlgTitle = document.getElementById('dlg-title');
+    document.querySelectorAll('.thumb').forEach(el=>{
+      el.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const conf = JSON.parse(el.getAttribute('data-video'));
+        dlgTitle.textContent = conf.title || 'Now playing…';
+        let html = '';
+        if(conf.type === 'mp4'){
+          const poster = conf.poster ? ` poster="${conf.poster}"` : '';
+          html = `<video src="${conf.src}"${poster} controls playsinline></video>`;
+        }else if(conf.type === 'yt'){
+          const src = `https://www.youtube.com/embed/${conf.id}?rel=0&autoplay=1`;
+          html = `<iframe src="${src}" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+        }else if(conf.type === 'vimeo'){
+          const src = `https://player.vimeo.com/video/${conf.id}?autoplay=1`;
+          html = `<iframe src="${src}" title="Vimeo video" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+        }
+        dlgBody.innerHTML = html;
+        dlg.showModal();
+      })
+    })
+    document.getElementById('dlg-close').addEventListener('click', ()=>{ dlg.close(); dlgBody.innerHTML=''; });
+    dlg.addEventListener('close', ()=>{ dlgBody.innerHTML=''; });
+  </script>
+</body>
+</html>
