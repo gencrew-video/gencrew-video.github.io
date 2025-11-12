@@ -113,12 +113,37 @@
           <a class="btn" href="#videos">Watch demos</a>
         </div>
       </div>
-      <figure class="teaser">
-        <object data="assets/teaser.pdf" type="application/pdf" class="pdf-teaser" aria-label="TIP pipeline teaser PDF">
-          <a href="assets/teaser.pdf" target="_blank" rel="noreferrer noopener">Open teaser PDF</a>
-        </object>
-        <figcaption class="caption">Fig. 1. TIP pipeline overview (PDF teaser).</figcaption>
+      <figure class="teaser" style="cursor:zoom-in" id="teaser-figure">
+        <img src="assets/teaser.png" alt="GenCrew architecture" style="width:100%;height:auto;display:block;border-radius:18px;">
+        <figcaption class="caption">
+          <strong>GenCrew architecture.</strong>
+          For each employee, the upper left corner displays their role and portrait, while the upper right corner outlines
+          the stages of participation and their roles. The essential parts of the prompt are depicted below.
+          <span style="display:block;color:var(--brand);font-weight:600;margin-top:4px;">Click to enlarge 🔍</span>
+        </figcaption>
       </figure>
+      
+      <!-- 放大弹窗 -->
+      <dialog id="img-modal" style="border:none;padding:0;background:transparent;">
+        <img src="assets/teaser.png" alt="GenCrew architecture enlarged"
+             style="width:100%;height:auto;max-height:95vh;border-radius:12px;display:block;margin:auto;">
+      </dialog>
+      
+      <script>
+      document.addEventListener('DOMContentLoaded', ()=>{
+        const teaser = document.getElementById('teaser-figure');
+        const modal = document.getElementById('img-modal');
+        teaser.addEventListener('click', ()=>{
+          if (typeof modal.showModal === 'function') {
+            modal.showModal();
+          } else {
+            // 兼容旧浏览器：直接打开图片
+            window.open('assets/teaser.png', '_blank');
+          }
+        });
+        modal.addEventListener('click', ()=> modal.close());
+      });
+      </script>
     </section>
 
     <!-- ============= VIDEOS ============= -->
