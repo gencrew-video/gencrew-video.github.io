@@ -127,16 +127,21 @@
       <p class="subtitle">Local MP4/WebM only. Click a thumbnail to open a player dialog.</p>
 
       <div class="video-grid">
-        <!-- Card 1 -->
+        <!-- Card 1 (use Releases asset URL) -->
         <article class="card">
-          <a class="thumb" href="#" data-video='{"type":"mp4","src":"assets/videos/video_6.mp4","title":"Video 1"}' aria-label="Play Video 1">
-            <video muted playsinline loop preload="metadata">
-              <source src="assets/videos/video_6.mp4" type="video/mp4">
+          <a class="thumb" href="#" data-video='{
+            "type":"mp4",
+            "src":"https://github.com/gencrew-video/gencrew-video.github.io/releases/download/v1.0/video_6.mp4",
+            "title":"Video 1",
+            "poster":"assets/thumbs/video_6.jpg"
+          }' aria-label="Play Video 1">
+            <video muted playsinline loop preload="metadata" poster="assets/thumbs/video_6.jpg">
+              <source src="https://github.com/gencrew-video/gencrew-video.github.io/releases/download/v1.0/video_6.mp4" type="video/mp4">
             </video>
             <span class="play">▶︎ Play</span>
           </a>
           <div class="meta"><h3>Video 1</h3><p>Short description (optional).</p></div>
-        </article>
+      </article>
 
         <!-- Card 2 -->
         <article class="card">
